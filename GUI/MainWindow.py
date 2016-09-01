@@ -12,13 +12,15 @@ class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self, None)
         self.resize(1280, 800)
-
+        self.setWindowTitle("Main Window")
         self.setDockNestingEnabled(True)
         self.setWindowIcon(get_icon("icon"))
         self._main_dock_widget = QDockWidget(self)
         self._main_dock_widget.setObjectName("MainDock");
         self._main_dock_widget.setWindowTitle("Main dock")
         self.addDockWidget(Qt.LeftDockWidgetArea, self._main_dock_widget)
+
+        # -------------      actions       -----------------
 
         self._open_action = QAction(get_icon("open"), "Open\nFile...", self)
         self._open_action.setShortcuts(QKeySequence.Open)
@@ -50,7 +52,6 @@ class MainWindow(QMainWindow):
         self.addAction(self._paste_action)
 
         self._zoom_action = QAction(get_icon("zoom"), "Zoom", self)
-        # self._zoom_action.setShortcuts()
         self._zoom_action.setStatusTip("Zoom in on document")
         self._zoom_action.triggered.connect(self.on_zoom)
         self._zoom_action.setIconVisibleInMenu(True)
@@ -79,7 +80,6 @@ class MainWindow(QMainWindow):
         self._ribbon_widget = RibbonWidget(self)
         self._ribbon.addWidget(self._ribbon_widget)
         self.init_ribbon()
-        self.setWindowTitle("Main Window")
 
     def init_ribbon(self):
         home_tab = self._ribbon_widget.add_ribbon_tab("Home")
@@ -153,7 +153,6 @@ class MainWindow(QMainWindow):
         QMessageBox().about(self, "About QupyRibbon", text)
 
     def on_license(self):
-
         file = open('LICENSE', 'r')
         lic = file.read()
         QMessageBox().information(self, "License", lic)
