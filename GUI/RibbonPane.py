@@ -62,5 +62,5 @@ class RibbonSeparator(QWidget):
     def paintEvent(self, event):
         qp = QtGui.QPainter()
         qp.begin(self)
-        qp.fillRect(event.rect(), Qt.gray)
+        qp.fillRect(event.rect(), Qt.lightGray)
         qp.end()
