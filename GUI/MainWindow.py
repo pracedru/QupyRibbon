@@ -86,6 +86,7 @@ class MainWindow(QMainWindow):
         file_pane = home_tab.add_ribbon_pane("File")
         file_pane.add_ribbon_widget(RibbonButton(self, self._open_action, True))
         file_pane.add_ribbon_widget(RibbonButton(self, self._save_action, True))
+
         edit_panel = home_tab.add_ribbon_pane("Edit")
         edit_panel.add_ribbon_widget(RibbonButton(self, self._copy_action, True))
         edit_panel.add_ribbon_widget(RibbonButton(self, self._paste_action, True))
@@ -108,9 +109,11 @@ class MainWindow(QMainWindow):
         text_box3.textChanged.connect(self.on_text_box3_changed)
         text_box3.setStyleSheet("border: 1px solid rgba(0,0,0,30%);")
         grid.addWidget(text_box3, 3, 2)
+
         view_panel = home_tab.add_ribbon_pane("View")
         view_panel.add_ribbon_widget(RibbonButton(self, self._zoom_action, True))
         home_tab.add_spacer()
+
         about_tab = self._ribbon_widget.add_ribbon_tab("About")
         info_panel = about_tab.add_ribbon_pane("Info")
         info_panel.add_ribbon_widget(RibbonButton(self, self._about_action, True))

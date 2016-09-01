@@ -7,7 +7,7 @@ def get_stylesheet(name):
     global stylesheet_instance
     if not stylesheet_instance:
         stylesheet_instance = Stylesheets()
-    return stylesheet_instance.stylesheet(name)
+    return stylesheet_instance.get_stylesheet(name)
 
 
 class Stylesheets(object):
@@ -25,7 +25,7 @@ class Stylesheets(object):
 
         self._stylesheets[name] = stylesheet
 
-    def stylesheet(self, name):
+    def get_stylesheet(self, name):
         stylesheet = ""
         try:
             stylesheet = self._stylesheets[name]
