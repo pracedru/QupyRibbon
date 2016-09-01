@@ -1,0 +1,11 @@
+QToolButton {
+    text-align: left;
+    border: 1px solid transparent;
+}
+
+QToolButton:hover {
+    text-align: left;
+    border: 1px solid rgba(120,160,255,60%);
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #def, stop: .4 #def, stop: .6 #d0e0ff, stop: 1 #d0e0ff);
+
+}
