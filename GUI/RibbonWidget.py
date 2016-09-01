@@ -8,13 +8,8 @@ __author__ = 'magnus'
 class RibbonWidget(QTabWidget):
     def __init__(self, main_window):
         QWidget.__init__(self, main_window)
-
         self.setMaximumHeight(120*gui_scale())
         self.setMinimumHeight(110*gui_scale())
-
-        # self._homeTab = RibbonTabHome(self, main_window)
-        # self.addTab(self._homeTab, "Home")
-        # self.addTab(QWidget(), "About")*/
 
     def add_ribbon_tab(self, name):
         ribbon_tab = RibbonTab(self, name)

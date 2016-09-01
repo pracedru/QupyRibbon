@@ -1,9 +1,6 @@
-
 QToolBar {
     padding: 0px;
 }
-
-
 
 QTabWidget:pane {
 	border-radius: 0px;
@@ -18,32 +15,24 @@ QTabWidget{
 
 }
 
-
 QTabWidget::tab-bar {
-    left: 2px; /* move to the right by 5px */
+    left: 2px;
 }
 
-
 QTabBar::tab {
-    /*border-bottom-color: #C2C7CB; /* same as the pane color */
-    /*background: rgba(255, 255, 255, 0);*/
-
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 12px;
     padding-right: 12px;
-
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     margin-right:5px;
-
     color:#2A2A2A;
  }
 
 QTabBar::tab:hover {
     background: rgba(255, 119, 0, 20%);
 }
-
 
 QTabBar::tab:selected{
     background: qlineargradient(x1: 0, y1: 1, x2: 0, y2: 0, stop: 0 #f9f9f9, stop: 1.0 #e0e0e0);
