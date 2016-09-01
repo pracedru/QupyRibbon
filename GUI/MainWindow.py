@@ -114,6 +114,7 @@ class MainWindow(QMainWindow):
         about_tab = self._ribbon_widget.add_ribbon_tab("About")
         info_panel = about_tab.add_ribbon_pane("Info")
         info_panel.add_ribbon_widget(RibbonButton(self, self._about_action, True))
+        info_panel.add_ribbon_widget(RibbonButton(self, self._license_action, True))
 
     def closeEvent(self, close_event):
         pass
@@ -152,4 +153,7 @@ class MainWindow(QMainWindow):
         QMessageBox().about(self, "About QupyRibbon", text)
 
     def on_license(self):
-        pass
+
+        file = open('LICENSE', 'r')
+        lic = file.read()
+        QMessageBox().information(self, "License", lic)
