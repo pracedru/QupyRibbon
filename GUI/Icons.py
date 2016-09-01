@@ -23,6 +23,8 @@ class Icons(object):
         self.make_icon("paste", "icons/paste.png")
         self.make_icon("zoom", "icons/zoom.png")
         self.make_icon("copy", "icons/copy.png")
+        self.make_icon("about", "icons/about.png")
+        self.make_icon("license", "icons/license.png")
         self.make_icon("default", "icons/folder.png")
 
     def make_icon(self, name, path):

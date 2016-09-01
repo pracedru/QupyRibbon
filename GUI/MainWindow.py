@@ -1,12 +1,9 @@
-from PyQt5 import QtGui
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QKeySequence
-from PyQt5.QtWidgets import *
 from GUI.RibbonButton import RibbonButton
 from GUI.Icons import get_icon
 from GUI.RibbonWidget import *
 from GUI.StyleSheets import get_stylesheet
-
 
 __author__ = 'mamj'
 
@@ -20,8 +17,6 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(get_icon("icon"))
         self._main_dock_widget = QDockWidget(self)
         self._main_dock_widget.setObjectName("MainDock");
-        self.buttonsWidget = QWidget()
-        self._main_dock_widget.setWidget(self.buttonsWidget)
         self._main_dock_widget.setWindowTitle("Main dock")
         self.addDockWidget(Qt.LeftDockWidgetArea, self._main_dock_widget)
 
@@ -61,6 +56,18 @@ class MainWindow(QMainWindow):
         self._zoom_action.setIconVisibleInMenu(True)
         self.addAction(self._zoom_action)
 
+        self._about_action = QAction(get_icon("about"), "About", self)
+        self._about_action.setStatusTip("About QupyRibbon")
+        self._about_action.triggered.connect(self.on_about)
+        self._about_action.setIconVisibleInMenu(True)
+        self.addAction(self._about_action)
+
+        self._license_action = QAction(get_icon("license"), "License", self)
+        self._license_action.setStatusTip("Licence for this software")
+        self._license_action.triggered.connect(self.on_license)
+        self._license_action.setIconVisibleInMenu(True)
+        self.addAction(self._license_action)
+
         # Ribbon
 
         self._ribbon = QToolBar(self)
@@ -96,20 +103,20 @@ class MainWindow(QMainWindow):
         text_box2.textChanged.connect(self.on_text_box2_changed)
         text_box2.setStyleSheet("border: 1px solid rgba(0,0,0,30%);")
         grid.addWidget(text_box2, 1, 2)
-
         text_box3 = QLineEdit()
         text_box3.setText("Text 3")
         text_box3.textChanged.connect(self.on_text_box3_changed)
         text_box3.setStyleSheet("border: 1px solid rgba(0,0,0,30%);")
         grid.addWidget(text_box3, 3, 2)
-
         view_panel = home_tab.add_ribbon_pane("View")
         view_panel.add_ribbon_widget(RibbonButton(self, self._zoom_action, True))
         home_tab.add_spacer()
         about_tab = self._ribbon_widget.add_ribbon_tab("About")
+        info_panel = about_tab.add_ribbon_pane("Info")
+        info_panel.add_ribbon_widget(RibbonButton(self, self._about_action, True))
 
-    def closeEvent(self, QCloseEvent):
-        self.viewWidget.stop()
+    def closeEvent(self, close_event):
+        pass
 
     def on_open_file(self):
         pass
@@ -136,4 +143,13 @@ class MainWindow(QMainWindow):
         pass
 
     def on_zoom(self):
+        pass
+
+    def on_about(self):
+        text = "QupyRibbon\n"
+        text += "This program was made by Magnus Jørgensen.\n"
+        text += "Copyright © 2016 Magnus Jørgensen"
+        QMessageBox().about(self, "About QupyRibbon", text)
+
+    def on_license(self):
         pass
