@@ -20,9 +20,9 @@ class Icons(object):
         self.make_icon("save", "icons/save.png")
         self.make_icon("icon", "icons/icon.png")
         self.make_icon("exit", "icons/exit.png")
-        self.make_icon("excel", "icons/excel.png")
-        self.make_icon("clear", "icons/clear.png")
-        self.make_icon("addstatic", "icons/addstatic.png")
+        self.make_icon("paste", "icons/paste.png")
+        self.make_icon("zoom", "icons/zoom.png")
+        self.make_icon("copy", "icons/copy.png")
         self.make_icon("default", "icons/folder.png")
 
     def make_icon(self, name, path):

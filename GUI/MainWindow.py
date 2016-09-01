@@ -40,6 +40,27 @@ class MainWindow(QMainWindow):
         self._save_action.setIconVisibleInMenu(True)
         self.addAction(self._save_action)
 
+        self._copy_action = QAction(get_icon("copy"), "Copy", self)
+        self._copy_action.setShortcuts(QKeySequence.Copy)
+        self._copy_action.setStatusTip("Copy selection")
+        self._copy_action.triggered.connect(self.on_copy)
+        self._copy_action.setIconVisibleInMenu(True)
+        self.addAction(self._copy_action)
+
+        self._paste_action = QAction(get_icon("paste"), "Paste", self)
+        self._paste_action.setShortcuts(QKeySequence.Copy)
+        self._paste_action.setStatusTip("Paste from clipboard")
+        self._paste_action.triggered.connect(self.on_paste)
+        self._paste_action.setIconVisibleInMenu(True)
+        self.addAction(self._paste_action)
+
+        self._zoom_action = QAction(get_icon("zoom"), "Zoom", self)
+        # self._zoom_action.setShortcuts()
+        self._zoom_action.setStatusTip("Zoom in on document")
+        self._zoom_action.triggered.connect(self.on_zoom)
+        self._zoom_action.setIconVisibleInMenu(True)
+        self.addAction(self._zoom_action)
+
         # Ribbon
 
         self._ribbon = QToolBar(self)
@@ -51,7 +72,7 @@ class MainWindow(QMainWindow):
         self._ribbon_widget = RibbonWidget(self)
         self._ribbon.addWidget(self._ribbon_widget)
         self.init_ribbon()
-        self.setWindowTitle("Circular Layout")
+        self.setWindowTitle("Main Window")
 
     def init_ribbon(self):
         home_tab = self._ribbon_widget.add_ribbon_tab("Home")
@@ -59,28 +80,31 @@ class MainWindow(QMainWindow):
         file_pane.add_ribbon_widget(RibbonButton(self, self._open_action, True))
         file_pane.add_ribbon_widget(RibbonButton(self, self._save_action, True))
         edit_panel = home_tab.add_ribbon_pane("Edit")
+        edit_panel.add_ribbon_widget(RibbonButton(self, self._copy_action, True))
+        edit_panel.add_ribbon_widget(RibbonButton(self, self._paste_action, True))
         grid = edit_panel.add_grid_widget(200)
         grid.addWidget(QLabel("Text box 1"), 1, 1)
         grid.addWidget(QLabel("Text box 2"), 2, 1)
         grid.addWidget(QLabel("Text box 3"), 3, 1)
-        self.text_box1 = QLineEdit()
-        self.text_box1.setText("Text 1")
-        self.text_box1.textChanged.connect(self.on_text_box1_changed)
-        self.text_box1.setStyleSheet("border: 1px solid rgba(0,0,0,30%);")
-        grid.addWidget(self.text_box1, 2, 2)
-        self.text_box2 = QLineEdit()
-        self.text_box2.setText("Text 2")
-        self.text_box2.textChanged.connect(self.on_text_box2_changed)
-        self.text_box2.setStyleSheet("border: 1px solid rgba(0,0,0,30%);")
-        grid.addWidget(self.text_box2, 1, 2)
+        text_box1 = QLineEdit()
+        text_box1.setText("Text 1")
+        text_box1.textChanged.connect(self.on_text_box1_changed)
+        text_box1.setStyleSheet("border: 1px solid rgba(0,0,0,30%);")
+        grid.addWidget(text_box1, 2, 2)
+        text_box2 = QLineEdit()
+        text_box2.setText("Text 2")
+        text_box2.textChanged.connect(self.on_text_box2_changed)
+        text_box2.setStyleSheet("border: 1px solid rgba(0,0,0,30%);")
+        grid.addWidget(text_box2, 1, 2)
 
-        self.text_box3 = QLineEdit()
-        self.text_box3.setText("Text 3")
-        self.text_box3.textChanged.connect(self.on_text_box3_changed)
-        self.text_box3.setStyleSheet("border: 1px solid rgba(0,0,0,30%);")
-        grid.addWidget(self.text_box3, 3, 2)
+        text_box3 = QLineEdit()
+        text_box3.setText("Text 3")
+        text_box3.textChanged.connect(self.on_text_box3_changed)
+        text_box3.setStyleSheet("border: 1px solid rgba(0,0,0,30%);")
+        grid.addWidget(text_box3, 3, 2)
 
         view_panel = home_tab.add_ribbon_pane("View")
+        view_panel.add_ribbon_widget(RibbonButton(self, self._zoom_action, True))
         home_tab.add_spacer()
         about_tab = self._ribbon_widget.add_ribbon_tab("About")
 
@@ -103,4 +127,13 @@ class MainWindow(QMainWindow):
         pass
 
     def on_text_box3_changed(self):
+        pass
+
+    def on_copy(self):
+        pass
+
+    def on_paste(self):
+        pass
+
+    def on_zoom(self):
         pass
