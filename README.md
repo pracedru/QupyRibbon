@@ -4,7 +4,6 @@
 This is a ribbon implementation in Python 3 using PyQt5.
 
 To use this you need to get the dependencies:
-
 '''
 sudo apt install python3
 sudo apt install python3-pyqt5
