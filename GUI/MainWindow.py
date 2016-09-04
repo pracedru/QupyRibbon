@@ -2,6 +2,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import QKeySequence as QKSec
 from GUI.RibbonButton import RibbonButton
 from GUI.Icons import get_icon
+from GUI.RibbonTextbox import RibbonTextbox
 from GUI.RibbonWidget import *
 
 __author__ = 'mamj'
@@ -29,6 +30,12 @@ class MainWindow(QMainWindow):
         self._zoom_action = self.add_action("Zoom", "zoom", "Zoom in on document", True, self.on_zoom)
         self._about_action = self.add_action("About", "about", "About QupyRibbon", True, self.on_about)
         self._license_action = self.add_action("License", "license", "Licence for this software", True, self.on_license)
+
+        # -------------      textboxes       -----------------
+
+        self._text_box1 = RibbonTextbox("Text 1", self.on_text_box1_changed, 80)
+        self._text_box2 = RibbonTextbox("Text 2", self.on_text_box1_changed, 80)
+        self._text_box3 = RibbonTextbox("Text 3", self.on_text_box1_changed, 80)
 
         # Ribbon
 
@@ -59,21 +66,9 @@ class MainWindow(QMainWindow):
         grid.addWidget(QLabel("Text box 1"), 1, 1)
         grid.addWidget(QLabel("Text box 2"), 2, 1)
         grid.addWidget(QLabel("Text box 3"), 3, 1)
-        text_box1 = QLineEdit()
-        text_box1.setText("Text 1")
-        text_box1.textChanged.connect(self.on_text_box1_changed)
-        text_box1.setStyleSheet("border: 1px solid rgba(0,0,0,30%);")
-        grid.addWidget(text_box1, 2, 2)
-        text_box2 = QLineEdit()
-        text_box2.setText("Text 2")
-        text_box2.textChanged.connect(self.on_text_box2_changed)
-        text_box2.setStyleSheet("border: 1px solid rgba(0,0,0,30%);")
-        grid.addWidget(text_box2, 1, 2)
-        text_box3 = QLineEdit()
-        text_box3.setText("Text 3")
-        text_box3.textChanged.connect(self.on_text_box3_changed)
-        text_box3.setStyleSheet("border: 1px solid rgba(0,0,0,30%);")
-        grid.addWidget(text_box3, 3, 2)
+        grid.addWidget(self._text_box1, 1, 2)
+        grid.addWidget(self._text_box2, 2, 2)
+        grid.addWidget(self._text_box3, 3, 2)
 
         view_panel = home_tab.add_ribbon_pane("View")
         view_panel.add_ribbon_widget(RibbonButton(self, self._zoom_action, True))
