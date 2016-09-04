@@ -3,7 +3,6 @@ from PyQt5.QtGui import QKeySequence as QKSec
 from GUI.RibbonButton import RibbonButton
 from GUI.Icons import get_icon
 from GUI.RibbonWidget import *
-from GUI.StyleSheets import get_stylesheet
 
 __author__ = 'mamj'
 
@@ -19,6 +18,7 @@ class MainWindow(QMainWindow):
         self._main_dock_widget.setObjectName("MainDock");
         self._main_dock_widget.setWindowTitle("Main dock")
         self.addDockWidget(Qt.LeftDockWidgetArea, self._main_dock_widget)
+        self.centralWidget()
 
         # -------------      actions       -----------------
 
