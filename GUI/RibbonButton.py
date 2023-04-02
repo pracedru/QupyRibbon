@@ -1,11 +1,10 @@
-from PyQt5 import Qt
 from PyQt5.QtCore import QSize
 from PyQt5.QtWidgets import *
 
 from GUI import gui_scale
 from GUI.StyleSheets import get_stylesheet
 
-__author__ = 'magnus'
+__author__ = "magnus"
 
 
 class RibbonButton(QToolButton):
@@ -19,17 +18,17 @@ class RibbonButton(QToolButton):
         self._actionOwner.changed.connect(self.update_button_status_from_action)
 
         if is_large:
-            self.setMaximumWidth(80 * sc)
-            self.setMinimumWidth(50 * sc)
-            self.setMinimumHeight(75 * sc)
-            self.setMaximumHeight(80 * sc)
+            self.setMaximumWidth(int(80 * sc))
+            self.setMinimumWidth(int(50 * sc))
+            self.setMinimumHeight(int(75 * sc))
+            self.setMaximumHeight(int(80 * sc))
             self.setStyleSheet(get_stylesheet("ribbonButton"))
             self.setToolButtonStyle(3)
-            self.setIconSize(QSize(32 * sc, 32 * sc))
+            self.setIconSize(QSize(int(32 * sc), int(32 * sc)))
         else:
             self.setToolButtonStyle(2)
-            self.setMaximumWidth(120 * sc)
-            self.setIconSize(QSize(16 * sc, 16 * sc))
+            self.setMaximumWidth(int(120 * sc))
+            self.setIconSize(QSize(int(16 * sc), int(16 * sc)))
             self.setStyleSheet(get_stylesheet("ribbonSmallButton"))
 
     def update_button_status_from_action(self):

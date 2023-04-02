@@ -1,11 +1,12 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QKeySequence as QKSec
-from GUI.RibbonButton import RibbonButton
+
 from GUI.Icons import get_icon
+from GUI.RibbonButton import RibbonButton
 from GUI.RibbonTextbox import RibbonTextbox
 from GUI.RibbonWidget import *
 
-__author__ = 'mamj'
+__author__ = "mamj"
 
 
 class MainWindow(QMainWindow):
@@ -16,20 +17,34 @@ class MainWindow(QMainWindow):
         self.setDockNestingEnabled(True)
         self.setWindowIcon(get_icon("icon"))
         self._main_dock_widget = QDockWidget(self)
-        self._main_dock_widget.setObjectName("MainDock");
+        self._main_dock_widget.setObjectName("MainDock")
         self._main_dock_widget.setWindowTitle("Main dock")
         self.addDockWidget(Qt.LeftDockWidgetArea, self._main_dock_widget)
         self.centralWidget()
 
         # -------------      actions       -----------------
 
-        self._open_action = self.add_action("Open", "open", "Open file", True, self.on_open_file, QKSec.Open)
-        self._save_action = self.add_action("Save", "save", "Save file", True, self.on_save, QKSec.Save)
-        self._copy_action = self.add_action("Copy", "copy", "Copy selection", True, self.on_copy, QKSec.Copy)
-        self._paste_action = self.add_action("Paste", "paste", "Paste from clipboard", True, self.on_paste, QKSec.Paste)
-        self._zoom_action = self.add_action("Zoom", "zoom", "Zoom in on document", True, self.on_zoom)
-        self._about_action = self.add_action("About", "about", "About QupyRibbon", True, self.on_about)
-        self._license_action = self.add_action("License", "license", "Licence for this software", True, self.on_license)
+        self._open_action = self.add_action(
+            "Open", "open", "Open file", True, self.on_open_file, QKSec.Open
+        )
+        self._save_action = self.add_action(
+            "Save", "save", "Save file", True, self.on_save, QKSec.Save
+        )
+        self._copy_action = self.add_action(
+            "Copy", "copy", "Copy selection", True, self.on_copy, QKSec.Copy
+        )
+        self._paste_action = self.add_action(
+            "Paste", "paste", "Paste from clipboard", True, self.on_paste, QKSec.Paste
+        )
+        self._zoom_action = self.add_action(
+            "Zoom", "zoom", "Zoom in on document", True, self.on_zoom
+        )
+        self._about_action = self.add_action(
+            "About", "about", "About QupyRibbon", True, self.on_about
+        )
+        self._license_action = self.add_action(
+            "License", "license", "Licence for this software", True, self.on_license
+        )
 
         # -------------      textboxes       -----------------
 
@@ -116,6 +131,6 @@ class MainWindow(QMainWindow):
         QMessageBox().about(self, "About QupyRibbon", text)
 
     def on_license(self):
-        file = open('LICENSE', 'r')
+        file = open("LICENSE", "r")
         lic = file.read()
         QMessageBox().information(self, "License", lic)
