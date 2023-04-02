@@ -1,4 +1,4 @@
-__author__ = 'magnus'
+__author__ = "magnus"
 
 stylesheet_instance = None
 

@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import *
 from GUI.MainWindow import MainWindow
 
-__author__ = 'mamj'
+__author__ = "mamj"
 
 
 def main():

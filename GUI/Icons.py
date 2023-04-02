@@ -1,6 +1,6 @@
 from PyQt5.QtGui import *
 
-__author__ = 'magnus'
+__author__ = "magnus"
 
 icons_instance = None
 
